@@ -20,7 +20,7 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/ic_launcher_splash" />
+            android:src="@drawable/splash_screen_image" />
     </item>
     <item
         android:gravity="bottom|right">

@@ -1,14 +1,24 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorSecondary</item>
+        <item name="android:textColorPrimary">@color/primaryTextColor</item>
         <item name="android:windowBackground">@drawable/main_screen</item>
     </style>
     <style name="SplashScreenTheme" parent="AppTheme">
         <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
+    <style name="Widget.GADSApp.Toolbar" parent="Widget.AppCompat.ActionBar">
+        <item name="theme">?theme</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="titleTextAppearance">@style/TextAppearance.GADSApp.Toolbar</item>
+        <item name="android:opacity">transparent</item>
+    </style>
+    <style name="TextAppearance.GADSApp.Toolbar" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:textSize">16sp</item>
     </style>
 
 </resources>

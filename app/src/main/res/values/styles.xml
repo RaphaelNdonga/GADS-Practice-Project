@@ -6,19 +6,36 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorSecondary</item>
         <item name="android:textColorPrimary">@color/primaryTextColor</item>
+        <item name="android:textColorSecondary">@color/secondaryTextColor</item>
         <item name="android:windowBackground">@drawable/main_screen</item>
     </style>
+
     <style name="SplashScreenTheme" parent="AppTheme">
         <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
-    <style name="Widget.GADSApp.Toolbar" parent="Widget.AppCompat.ActionBar">
-        <item name="theme">?theme</item>
-        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
-        <item name="titleTextAppearance">@style/TextAppearance.GADSApp.Toolbar</item>
-        <item name="android:opacity">transparent</item>
+
+    <style name="TextAppearance.GADSApp.FakeToolbarTitle" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:textStyle">bold</item>
     </style>
-    <style name="TextAppearance.GADSApp.Toolbar" parent="TextAppearance.MaterialComponents.Button">
-        <item name="android:textSize">16sp</item>
+
+    <style name="Widget.GadsApp.Button" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">20dp</item>
+        <item name="backgroundTint">@color/primaryTextColor</item>
+    </style>
+
+    <style name="Widget.GadsApp.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="hintTextColor">@color/colorSecondary</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="hintTextAppearance">@style/TextAppearance.GadsApp.TextInputLayout.HintTextAppearance</item>
+        <item name="boxStrokeColor">@color/colorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.GadsApp.TextInputLayout.HintTextAppearance" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/colorSecondary</item>
+    </style>
+    <style name="TextAppearance.GadsApp.RegularTextAppearance" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/secondaryTextColor</item>
     </style>
 
 </resources>

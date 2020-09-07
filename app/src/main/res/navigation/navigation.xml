@@ -6,7 +6,11 @@
     app:startDestination="@id/gadsLeaderboardFragment">
     <fragment
         android:id="@+id/projectSubmissionFragment"
-        android:name="com.example.android.gadspracticeproject.screens.ProjectSubmissionFragment" />
+        android:name="com.example.android.gadspracticeproject.screens.ProjectSubmissionFragment" >
+        <action
+            android:id="@+id/action_projectSubmissionFragment_to_gadsLeaderboardFragment"
+            app:destination="@id/gadsLeaderboardFragment" />
+    </fragment>
     <fragment
         android:id="@+id/gadsLeaderboardFragment"
         android:name="com.example.android.gadspracticeproject.screens.gadsleaderboard.GadsLeaderboardFragment"

@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import com.example.android.gadspracticeproject.R
 import com.example.android.gadspracticeproject.databinding.FragmentProjectSubmissionBinding
+import com.example.android.gadspracticeproject.util.EventObserver
 
 class ProjectSubmissionFragment : Fragment() {
 
@@ -22,19 +24,23 @@ class ProjectSubmissionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding:FragmentProjectSubmissionBinding = DataBindingUtil.inflate(
+        val binding: FragmentProjectSubmissionBinding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_project_submission,
             container,
             false
         )
+        viewModel = ViewModelProvider(this).get(ProjectSubmissionViewModel::class.java)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+
+        viewModel.navigator.observe(viewLifecycleOwner, EventObserver {
+            findNavController().navigate(
+                ProjectSubmissionFragmentDirections
+                    .actionProjectSubmissionFragmentToGadsLeaderboardFragment()
+            )
+        })
+
         return binding.root
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        // TODO: Use the ViewModel
-        super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ProjectSubmissionViewModel::class.java)
-    }
-
 }

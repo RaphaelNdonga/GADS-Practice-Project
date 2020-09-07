@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.example.android.gadspracticeproject.screens.ProjectSubmissionViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,12 +18,142 @@
 
         <ImageView
             android:id="@+id/project_submission_gads_image"
-            android:layout_width="207dp"
-            android:layout_height="109dp"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
             android:src="@drawable/project_submission_gads_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:onClick="@{()->viewModel.navigateToLeaderboard()}"
+            android:src="@drawable/ic_back"
+            app:layout_constraintEnd_toStartOf="@id/project_submission_gads_image"
+            app:layout_constraintHorizontal_bias="0.242"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/project_submission_gads_image" />
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/TextAppearance.GADSApp.FakeToolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Project Submission"
+            android:textColor="@color/colorSecondary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/project_submission_gads_image" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/colorSecondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/firstName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/edit_text_start_end_margin"
+            android:layout_marginTop="@dimen/edit_text_top_margin"
+            android:layout_marginEnd="@dimen/edit_text_start_end_margin"
+            android:hint="First Name"
+            style="@style/Widget.GadsApp.TextInputLayout"
+            app:layout_constraintEnd_toStartOf="@+id/lastName"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TextAppearance.GadsApp.RegularTextAppearance"
+                android:ems="10"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/lastName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/edit_text_start_end_margin"
+            android:layout_marginEnd="@dimen/edit_text_start_end_margin"
+            style="@style/Widget.GadsApp.TextInputLayout"
+            android:hint="Last Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/firstName"
+            app:layout_constraintTop_toTopOf="@+id/firstName">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextAppearance.GadsApp.RegularTextAppearance"
+                android:ems="10"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/Widget.GadsApp.TextInputLayout"
+            android:layout_marginStart="@dimen/edit_text_start_end_margin"
+            android:layout_marginTop="@dimen/edit_text_top_margin"
+            android:layout_marginEnd="@dimen/edit_text_start_end_margin"
+            android:hint="Email Address"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.842"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/firstName">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                style="@style/TextAppearance.GadsApp.RegularTextAppearance"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/githubLink"
+            android:layout_width="0dp"
+            style="@style/Widget.GadsApp.TextInputLayout"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/edit_text_start_end_margin"
+            android:layout_marginTop="@dimen/edit_text_top_margin"
+            android:layout_marginEnd="@dimen/edit_text_start_end_margin"
+            android:hint="Project on GITHUB (Link)"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/emailAddress">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TextAppearance.GadsApp.RegularTextAppearance"
+                android:ems="10"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.GadsApp.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/edit_text_top_margin"
+            android:text="Submit"
+            android:textColor="@color/primaryTextColor"
+            app:backgroundTint="@color/colorSecondary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/githubLink" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

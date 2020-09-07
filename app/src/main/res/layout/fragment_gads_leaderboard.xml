@@ -4,6 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="viewModel"
+            type="com.example.android.gadspracticeproject.screens.gadsleaderboard.GadsLeaderboardViewModel" />
 
     </data>
 
@@ -12,6 +15,30 @@
         android:layout_height="match_parent"
         tools:context=".screens.gadsleaderboard.GadsLeaderboardFragment"
         android:orientation="vertical">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LEADERBOARD"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                style="@style/TextAppearance.GADSApp.FakeToolbarTitle"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/navigate_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:onClick="@{()->viewModel.navigateToProjectSubmission()}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                style="@style/Widget.GadsApp.Button"
+                app:backgroundTint="@color/primaryTextColor"
+                android:textColor="@color/colorPrimaryDark"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"

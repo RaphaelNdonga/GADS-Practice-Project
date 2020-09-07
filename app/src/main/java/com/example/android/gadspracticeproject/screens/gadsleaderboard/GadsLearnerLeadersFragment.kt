@@ -1,14 +1,12 @@
 package com.example.android.gadspracticeproject.screens.gadsleaderboard
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.android.gadspracticeproject.R
 import com.example.android.gadspracticeproject.databinding.FragmentGadsLearnerLeadersBinding
-import com.example.android.gadspracticeproject.databinding.GadsLeaderboardFragmentBinding
 
 class GadsLearnerLeadersFragment : Fragment() {
     override fun onCreateView(
@@ -24,5 +22,4 @@ class GadsLearnerLeadersFragment : Fragment() {
         )
         return binding.root
     }
-
 }

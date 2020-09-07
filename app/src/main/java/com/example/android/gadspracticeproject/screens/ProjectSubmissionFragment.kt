@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.example.android.gadspracticeproject.R
-import com.example.android.gadspracticeproject.databinding.ProjectSubmissionFragmentBinding
+import com.example.android.gadspracticeproject.databinding.FragmentProjectSubmissionBinding
 
 class ProjectSubmissionFragment : Fragment() {
 
@@ -22,9 +22,9 @@ class ProjectSubmissionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding:ProjectSubmissionFragmentBinding = DataBindingUtil.inflate(
+        val binding:FragmentProjectSubmissionBinding = DataBindingUtil.inflate(
             inflater,
-            R.layout.project_submission_fragment,
+            R.layout.fragment_project_submission,
             container,
             false
         )

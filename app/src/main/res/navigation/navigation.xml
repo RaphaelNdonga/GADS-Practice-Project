@@ -3,25 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    android:label="LEADERBOARD"
     app:startDestination="@id/gadsLeaderboardFragment">
-
+    <fragment
+        android:id="@+id/projectSubmissionFragment"
+        android:name="com.example.android.gadspracticeproject.screens.ProjectSubmissionFragment" />
     <fragment
         android:id="@+id/gadsLeaderboardFragment"
         android:name="com.example.android.gadspracticeproject.screens.gadsleaderboard.GadsLeaderboardFragment"
-        android:label="LEADERBOARD"
-        tools:layout="@layout/gads_leaderboard_fragment" >
+        android:label="Leaderboard">
         <action
             android:id="@+id/action_gadsLeaderboardFragment_to_projectSubmissionFragment"
             app:destination="@id/projectSubmissionFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/projectSubmissionFragment"
-        android:name="com.example.android.gadspracticeproject.screens.ProjectSubmissionFragment"
-        android:label="Project Submission"
-        tools:layout="@layout/project_submission_fragment" >
-        <action
-            android:id="@+id/action_projectSubmissionFragment_to_gadsLeaderboardFragment"
-            app:destination="@id/gadsLeaderboardFragment" />
     </fragment>
 </navigation>

@@ -7,31 +7,30 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.android.gadspracticeproject.R
-import com.example.android.gadspracticeproject.databinding.FragmentGadsLeaderboardBinding
+import com.example.android.gadspracticeproject.databinding.FragmentLeaderboardBinding
 import com.example.android.gadspracticeproject.util.EventObserver
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
-class GadsLeaderboardFragment : Fragment() {
+class LeaderboardFragment : Fragment() {
 
     companion object {
-        fun newInstance() = GadsLeaderboardFragment()
+        fun newInstance() = LeaderboardFragment()
     }
 
-    private lateinit var viewModel: GadsLeaderboardViewModel
+    private lateinit var viewModel: LeaderboardViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding: FragmentGadsLeaderboardBinding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_gads_leaderboard, container, false)
+        val binding: FragmentLeaderboardBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_leaderboard, container, false)
 
-        viewModel = ViewModelProvider(this).get(GadsLeaderboardViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(LeaderboardViewModel::class.java)
         setHasOptionsMenu(true)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
@@ -39,7 +38,7 @@ class GadsLeaderboardFragment : Fragment() {
         val submitBtn = binding.navigateBtn
         val viewPager = binding.viewPager
         val tabLayout = binding.tabLayout
-        val adapter = GadsLeaderboardViewPagerAdapter(this)
+        val adapter = LeaderboardViewPager(this)
         val tabs = listOf("Learning Leaders", "Skill IQ leaders")
         viewPager.adapter = adapter
 
@@ -50,7 +49,7 @@ class GadsLeaderboardFragment : Fragment() {
         viewModel.navigator.observe(viewLifecycleOwner, EventObserver{
             Log.i("GADS LEADERBOARD", "We're in the navigator observer")
             findNavController().navigate(
-                GadsLeaderboardFragmentDirections.
+                LeaderboardFragmentDirections.
                 actionGadsLeaderboardFragmentToProjectSubmissionFragment()
             )
         })

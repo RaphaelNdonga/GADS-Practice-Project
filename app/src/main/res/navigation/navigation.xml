@@ -9,11 +9,13 @@
         android:name="com.example.android.gadspracticeproject.screens.ProjectSubmissionFragment" >
         <action
             android:id="@+id/action_projectSubmissionFragment_to_gadsLeaderboardFragment"
-            app:destination="@id/gadsLeaderboardFragment" />
+            app:destination="@id/gadsLeaderboardFragment"
+            app:popUpTo="@id/gadsLeaderboardFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/gadsLeaderboardFragment"
-        android:name="com.example.android.gadspracticeproject.screens.gadsleaderboard.GadsLeaderboardFragment"
+        android:name="com.example.android.gadspracticeproject.screens.gadsleaderboard.LeaderboardFragment"
         android:label="Leaderboard">
         <action
             android:id="@+id/action_gadsLeaderboardFragment_to_projectSubmissionFragment"

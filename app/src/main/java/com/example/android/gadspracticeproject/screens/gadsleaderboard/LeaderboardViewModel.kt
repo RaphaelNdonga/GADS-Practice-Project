@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.android.gadspracticeproject.util.Event
 
-class GadsLeaderboardViewModel : ViewModel() {
+class LeaderboardViewModel : ViewModel() {
 
     private val _navigator = MutableLiveData<Event<Unit>>()
     val navigator:LiveData<Event<Unit>>

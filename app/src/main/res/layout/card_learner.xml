@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="learnerDetails"
+            type="com.example.android.gadspracticeproject.network.TopLearner" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation = "vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/top_learner_badge"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:learnerBadge="@{learnerDetails.badgeUrl}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <TextView
+                android:id="@+id/top_learner_name"
+                style="@style/TextAppearance.GadsApp.TitleTextAppearance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:learnerName="@{learnerDetails}"
+                android:textColor="@color/secondaryTextColor"
+                app:layout_constraintStart_toEndOf="@+id/top_learner_badge"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/top_learner_hours"
+                style="@style/TextAppearance.GadsApp.RegularTextAppearance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:learnerHours="@{learnerDetails}"
+                app:layout_constraintStart_toEndOf="@+id/top_learner_badge"
+                app:layout_constraintTop_toBottomOf="@+id/top_learner_name" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

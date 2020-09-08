@@ -3,7 +3,7 @@ package com.example.android.gadspracticeproject.screens.gadsleaderboard
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class GadsLeaderboardViewPagerAdapter(fragment: Fragment) :FragmentStateAdapter(fragment){
+class LeaderboardViewPager(fragment: Fragment) :FragmentStateAdapter(fragment){
     override fun getItemCount(): Int {
         return 2
     }
@@ -11,10 +11,10 @@ class GadsLeaderboardViewPagerAdapter(fragment: Fragment) :FragmentStateAdapter(
     override fun createFragment(position: Int): Fragment {
         return when(position){
             0->{
-                GadsLearnerLeadersFragment()
+                LearnerFragment()
             }
             1->{
-                GadsSkillLeadersFragment()
+                SkillerFragment()
             }
             else -> throw Exception()
         }

@@ -1,4 +1,4 @@
-package com.example.android.gadspracticeproject.screens.gadsleaderboard
+package com.example.android.gadspracticeproject.screens.gadsleaderboard.toplearners
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android.gadspracticeproject.databinding.CardLearnerBinding
 import com.example.android.gadspracticeproject.network.TopLearner
 
-class LearnerAdapter:ListAdapter<TopLearner,LearnerAdapter.ViewHolder>(DiffUtilCallBack()){
+class LearnerAdapter:ListAdapter<TopLearner, LearnerAdapter.ViewHolder>(DiffUtilCallBack){
     class ViewHolder(private val binding:CardLearnerBinding):RecyclerView.ViewHolder(binding.root) {
         fun bind(currentLearner: TopLearner) {
             binding.executePendingBindings()
@@ -25,20 +25,21 @@ class LearnerAdapter:ListAdapter<TopLearner,LearnerAdapter.ViewHolder>(DiffUtilC
         val currentLearner = getItem(position)
         holder.bind(currentLearner)
     }
-}
+    companion object DiffUtilCallBack:DiffUtil.ItemCallback<TopLearner>() {
+        override fun areItemsTheSame(oldItem: TopLearner, newItem: TopLearner): Boolean {
+            return oldItem == newItem
+        }
 
-class DiffUtilCallBack:DiffUtil.ItemCallback<TopLearner>() {
-    override fun areItemsTheSame(oldItem: TopLearner, newItem: TopLearner): Boolean {
-        return oldItem == newItem
+        override fun areContentsTheSame(
+            oldItem: TopLearner,
+            newItem: TopLearner
+        ): Boolean {
+            return  oldItem.country == newItem.country &&
+                    oldItem.hours == newItem.hours &&
+                    oldItem.name == newItem.name
+        }
+
     }
 
-    override fun areContentsTheSame(
-        oldItem: TopLearner,
-        newItem: TopLearner
-    ): Boolean {
-        return  oldItem.country == newItem.country &&
-                oldItem.hours == newItem.hours &&
-                oldItem.name == newItem.name
-    }
-
 }
+

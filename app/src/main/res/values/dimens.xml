@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="edit_text_start_end_margin">10dp</dimen>
-    <dimen name="edit_text_top_margin">75dp</dimen>
+    <dimen name="edit_text_top_margin">50dp</dimen>
+    <dimen name="badge_width">100dp</dimen>
+    <dimen name="badge_height">100dp</dimen>
+    <dimen name="card_margin">10dp</dimen>
+    <dimen name="card_padding">8dp</dimen>
 </resources>

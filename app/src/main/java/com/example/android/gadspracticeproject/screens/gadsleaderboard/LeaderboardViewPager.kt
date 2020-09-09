@@ -2,6 +2,8 @@ package com.example.android.gadspracticeproject.screens.gadsleaderboard
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.android.gadspracticeproject.screens.gadsleaderboard.toplearners.LearnerFragment
+import com.example.android.gadspracticeproject.screens.gadsleaderboard.topskill.SkillerFragment
 
 class LeaderboardViewPager(fragment: Fragment) :FragmentStateAdapter(fragment){
     override fun getItemCount(): Int {

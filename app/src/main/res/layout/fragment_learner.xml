@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
-            type="com.example.android.gadspracticeproject.screens.gadsleaderboard.LearnerViewModel" />
+            type="com.example.android.gadspracticeproject.screens.gadsleaderboard.toplearners.LearnerViewModel" />
 
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/fragmentBackgroundColor">
-
+        android:background="@color/fragmentBackgroundColor"
+        android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/learner_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/learner_recycler_view"
-            tools:listitem="@layout/card_learner"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:learnerItem="@{viewModel.topLearner}"
             tools:itemCount="10"
-            app:listItem="@{viewModel.topLearner}"/>
+            tools:listitem="@layout/card_learner" />
     </LinearLayout>
 </layout>

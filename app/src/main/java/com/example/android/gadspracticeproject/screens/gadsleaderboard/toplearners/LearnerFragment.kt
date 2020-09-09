@@ -1,4 +1,4 @@
-package com.example.android.gadspracticeproject.screens.gadsleaderboard
+package com.example.android.gadspracticeproject.screens.gadsleaderboard.toplearners
 
 import android.os.Bundle
 import android.view.*

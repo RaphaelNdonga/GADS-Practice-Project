@@ -18,7 +18,7 @@ class LearnerAdapter:ListAdapter<TopLearner,LearnerAdapter.ViewHolder>(DiffUtilC
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return ViewHolder(CardLearnerBinding.inflate(layoutInflater))
+        return ViewHolder(CardLearnerBinding.inflate(layoutInflater,parent,false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

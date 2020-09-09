@@ -24,7 +24,8 @@ fun bindRecyclerView(recyclerView: RecyclerView,data:List<TopLearner>?){
 @BindingAdapter("learnerHours")
 fun TextView.bindHourText(item:TopLearner?){
     item?.let {
-        text = item.hours.toString()
+        val string = "${item.hours} learning hours, ${item.country}"
+        text = string
     }
 }
 @BindingAdapter("learnerName")

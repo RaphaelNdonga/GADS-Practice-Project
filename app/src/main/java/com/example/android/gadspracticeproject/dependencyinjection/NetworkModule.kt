@@ -1,4 +1,4 @@
-package com.example.android.gadspracticeproject.di
+package com.example.android.gadspracticeproject.dependencyinjection
 
 import com.example.android.gadspracticeproject.network.TopLearnersService
 import com.example.android.gadspracticeproject.network.TopSkillService

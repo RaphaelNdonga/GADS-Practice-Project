@@ -58,33 +58,34 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/firstName"
+            style="@style/Widget.GadsApp.TextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/edit_text_start_end_margin"
             android:layout_marginTop="@dimen/edit_text_top_margin"
             android:layout_marginEnd="@dimen/edit_text_start_end_margin"
             android:hint="First Name"
-            style="@style/Widget.GadsApp.TextInputLayout"
             app:layout_constraintEnd_toStartOf="@+id/lastName"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/TextAppearance.GadsApp.RegularTextAppearance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/TextAppearance.GadsApp.RegularTextAppearance"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:text="@={viewModel.firstName}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/lastName"
+            style="@style/Widget.GadsApp.TextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/edit_text_start_end_margin"
             android:layout_marginEnd="@dimen/edit_text_start_end_margin"
-            style="@style/Widget.GadsApp.TextInputLayout"
             android:hint="Last Name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -92,18 +93,19 @@
             app:layout_constraintTop_toTopOf="@+id/firstName">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/TextAppearance.GadsApp.RegularTextAppearance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/TextAppearance.GadsApp.RegularTextAppearance"
                 android:ems="10"
+                android:text="@={viewModel.lastName}"
                 android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailAddress"
+            style="@style/Widget.GadsApp.TextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            style="@style/Widget.GadsApp.TextInputLayout"
             android:layout_marginStart="@dimen/edit_text_start_end_margin"
             android:layout_marginTop="@dimen/edit_text_top_margin"
             android:layout_marginEnd="@dimen/edit_text_start_end_margin"
@@ -114,17 +116,18 @@
             app:layout_constraintTop_toBottomOf="@+id/firstName">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/TextAppearance.GadsApp.RegularTextAppearance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@={viewModel.email}"
                 android:ems="10"
-                style="@style/TextAppearance.GadsApp.RegularTextAppearance"
                 android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/githubLink"
-            android:layout_width="0dp"
             style="@style/Widget.GadsApp.TextInputLayout"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/edit_text_start_end_margin"
             android:layout_marginTop="@dimen/edit_text_top_margin"
@@ -135,9 +138,10 @@
             app:layout_constraintTop_toBottomOf="@+id/emailAddress">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/TextAppearance.GadsApp.RegularTextAppearance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/TextAppearance.GadsApp.RegularTextAppearance"
+                android:text="@={viewModel.githubLink}"
                 android:ems="10"
                 android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -148,6 +152,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/edit_text_top_margin"
             android:text="Submit"
+            android:onClick="@{()->viewModel.submitProject()}"
             android:textColor="@color/primaryTextColor"
             app:backgroundTint="@color/colorSecondary"
             app:layout_constraintEnd_toEndOf="parent"

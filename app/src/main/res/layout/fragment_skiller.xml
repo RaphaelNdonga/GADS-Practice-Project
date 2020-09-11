@@ -11,11 +11,10 @@
 
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/fragmentBackgroundColor"
-        android:orientation="vertical">
+        android:background="@color/fragmentBackgroundColor">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/skiller_recycler_view"
@@ -24,6 +23,19 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:skillItem="@{viewModel.topSkillers}"
             tools:itemCount="10"
-            tools:listitem="@layout/card_skiller" />
-    </LinearLayout>
+            tools:listitem="@layout/card_skiller"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+        <ImageView
+            android:id="@+id/skiller_status_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:leaderBoardApiStatus="@{viewModel.leaderBoardApiStatus}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

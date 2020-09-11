@@ -1,13 +1,16 @@
 package com.example.android.gadspracticeproject.util
 
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.android.gadspracticeproject.R
 import com.example.android.gadspracticeproject.network.TopLearner
 import com.example.android.gadspracticeproject.network.TopSkillDetails
+import com.example.android.gadspracticeproject.screens.gadsleaderboard.LeaderBoardApiStatus
 import com.example.android.gadspracticeproject.screens.gadsleaderboard.toplearners.LearnerAdapter
 import com.example.android.gadspracticeproject.screens.gadsleaderboard.topskill.SkillerAdapter
 
@@ -49,4 +52,20 @@ fun TextView.bindSkillIQ(item:TopSkillDetails){
 @BindingAdapter("skillName")
 fun TextView.bindSkillName(item:TopSkillDetails){
     text = item.name
+}
+@BindingAdapter("leaderBoardApiStatus")
+fun bindImageView(imageView: ImageView, leaderBoardApiStatus: LeaderBoardApiStatus?){
+    when(leaderBoardApiStatus){
+        LeaderBoardApiStatus.LOADING -> {
+            imageView.visibility = View.VISIBLE
+            imageView.setImageResource(R.drawable.loading_animation)
+        }
+        LeaderBoardApiStatus.ERROR -> {
+            imageView.visibility = View.VISIBLE
+            imageView.setImageResource(R.drawable.ic_connection_error)
+        }
+        LeaderBoardApiStatus.SUCCESS -> {
+            imageView.visibility = View.GONE
+        }
+    }
 }

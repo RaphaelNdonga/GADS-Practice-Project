@@ -12,11 +12,17 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
+enum class DialogStatus{
+    CONFIRM,SUCCESSFUL,UNSUCCESSFUL
+}
 class ProjectSubmissionViewModel : ViewModel() {
     private val projectSubmissionApiService: ProjectSubmissionApiService = ProjectSubmissionApi.retrofitService
     private val _navigator = MutableLiveData<Event<Unit>>()
     val navigator: LiveData<Event<Unit>>
         get() = _navigator
+    private val _dialogStatus = MutableLiveData<Event<DialogStatus>>()
+    val dialogStatus:LiveData<Event<DialogStatus>>
+        get() = _dialogStatus
 
     val firstName = MutableLiveData<String>()
     val lastName = MutableLiveData<String>()
@@ -28,28 +34,33 @@ class ProjectSubmissionViewModel : ViewModel() {
 
 
 
-    fun submitProject(){
+    fun checkFormStatus(){
         val email = email.value
         val firstName = firstName.value
         val lastName = lastName.value
         val githubLink = githubLink.value
         if(email.isNullOrEmpty() || firstName.isNullOrEmpty() || lastName.isNullOrEmpty() || githubLink.isNullOrEmpty()){
             Log.i("SubmissionViewModel","All blanks should be filled")
+            _dialogStatus.value = Event(DialogStatus.UNSUCCESSFUL)
             return
         }
+        _dialogStatus.value = Event(DialogStatus.CONFIRM)
+    }
+    fun submitProject(){
         uiScope.launch {
             val projectSubmissionDeferred = projectSubmissionApiService.submitProject(
-                email, firstName, lastName, githubLink
+                email.value!!, firstName.value!!, lastName.value!!, githubLink.value!!
             )
             try {
                 Log.i("SubmissionViewModel","Loading...")
-                val submission = projectSubmissionDeferred.await()
+                projectSubmissionDeferred.await()
                 Log.i("SubmissionViewModel","Submission successful")
+                _dialogStatus.value = Event(DialogStatus.SUCCESSFUL)
             }catch (e:Exception){
+                _dialogStatus.value = Event(DialogStatus.UNSUCCESSFUL)
                 Log.i("SubmissionViewModel","Error $e occurred")
             }
         }
-        navigateToLeaderboard()
     }
 
     fun navigateToLeaderboard(){

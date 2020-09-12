@@ -71,6 +71,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/firstNameText"
                 style="@style/TextAppearance.GadsApp.RegularTextAppearance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -93,6 +94,7 @@
             app:layout_constraintTop_toTopOf="@+id/firstName">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/lastNameText"
                 style="@style/TextAppearance.GadsApp.RegularTextAppearance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -116,6 +118,7 @@
             app:layout_constraintTop_toBottomOf="@+id/firstName">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailAddressText"
                 style="@style/TextAppearance.GadsApp.RegularTextAppearance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -138,6 +141,7 @@
             app:layout_constraintTop_toBottomOf="@+id/emailAddress">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/githubLinkText"
                 style="@style/TextAppearance.GadsApp.RegularTextAppearance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -147,12 +151,12 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/submit_btn"
             style="@style/Widget.GadsApp.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/edit_text_top_margin"
             android:text="Submit"
-            android:onClick="@{()->viewModel.checkFormStatus()}"
             android:textColor="@color/primaryTextColor"
             app:backgroundTint="@color/colorSecondary"
             app:layout_constraintEnd_toEndOf="parent"

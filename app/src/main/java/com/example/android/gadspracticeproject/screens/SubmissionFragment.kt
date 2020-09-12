@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.android.gadspracticeproject.R
 import com.example.android.gadspracticeproject.databinding.FragmentSubmissionBinding
 import com.example.android.gadspracticeproject.util.EventObserver
+import kotlinx.android.synthetic.main.fragment_submission.*
 
 class SubmissionFragment : Fragment() {
 
@@ -35,6 +36,7 @@ class SubmissionFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(SubmissionViewModel::class.java)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+        val submitBtn = binding.submitBtn
 
         viewModel.navigator.observe(viewLifecycleOwner, EventObserver {
             findNavController().navigate(
@@ -59,6 +61,15 @@ class SubmissionFragment : Fragment() {
             }
 
         })
+        submitBtn.setOnClickListener {
+            when {
+                firstNameText.text.isNullOrEmpty() -> firstNameText.error = viewModel.fieldError
+                lastNameText.text.isNullOrEmpty() -> lastNameText.error = viewModel.fieldError
+                emailAddressText.text.isNullOrEmpty() -> emailAddressText.error = viewModel.fieldError
+                githubLinkText.text.isNullOrEmpty() -> githubLinkText.error = viewModel.fieldError
+                else-> viewModel.confirmSubmission()
+            }
+        }
 
         return binding.root
     }

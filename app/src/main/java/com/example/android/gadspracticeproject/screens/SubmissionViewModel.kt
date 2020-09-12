@@ -14,12 +14,16 @@ import kotlinx.coroutines.launch
 
 class SubmissionViewModel : ViewModel() {
     private val projectSubmissionApiService: ProjectSubmissionApiService = ProjectSubmissionApi.retrofitService
+
     private val _navigator = MutableLiveData<Event<Unit>>()
     val navigator: LiveData<Event<Unit>>
         get() = _navigator
+
     private val _dialogStatus = MutableLiveData<Event<SubmissionStatus>>()
     val submissionStatus:LiveData<Event<SubmissionStatus>>
         get() = _dialogStatus
+
+    val fieldError = "Field cannot be empty"
 
     val firstName = MutableLiveData<String>()
     val lastName = MutableLiveData<String>()
@@ -31,16 +35,7 @@ class SubmissionViewModel : ViewModel() {
 
 
 
-    fun checkFormStatus(){
-        val email = email.value
-        val firstName = firstName.value
-        val lastName = lastName.value
-        val githubLink = githubLink.value
-        if(email.isNullOrEmpty() || firstName.isNullOrEmpty() || lastName.isNullOrEmpty() || githubLink.isNullOrEmpty()){
-            Log.i("SubmissionViewModel","All blanks should be filled")
-            _dialogStatus.value = Event(SubmissionStatus.UNSUCCESSFUL)
-            return
-        }
+    fun confirmSubmission(){
         _dialogStatus.value = Event(SubmissionStatus.CONFIRM)
     }
     fun submitProject(){

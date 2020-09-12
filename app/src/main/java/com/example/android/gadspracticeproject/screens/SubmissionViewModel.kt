@@ -63,4 +63,9 @@ class SubmissionViewModel : ViewModel() {
     fun navigateToLeaderboard(){
         _navigator.value = Event(Unit)
     }
+
+    override fun onCleared() {
+        super.onCleared()
+        job.cancel()
+    }
 }

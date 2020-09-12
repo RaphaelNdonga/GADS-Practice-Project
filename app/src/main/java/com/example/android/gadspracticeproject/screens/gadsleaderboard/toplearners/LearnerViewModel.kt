@@ -42,4 +42,9 @@ class LearnerViewModel(private val topLearnersService: TopLearnersService) : Vie
             }
         }
     }
+
+    override fun onCleared() {
+        super.onCleared()
+        job.cancel()
+    }
 }

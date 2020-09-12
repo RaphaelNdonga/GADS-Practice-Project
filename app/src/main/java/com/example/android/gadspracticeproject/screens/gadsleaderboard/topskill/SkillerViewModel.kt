@@ -44,4 +44,9 @@ class SkillerViewModel(private val topSkillService: TopSkillService): ViewModel(
 
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        job.cancel()
+    }
+
 }

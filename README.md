@@ -9,10 +9,14 @@ Dependency injection enforced using Hilt.
 - [Glide](https://github.com/bumptech/glide) - This is used to parse image urls from the web into images.
 
 ## Screenshots
-| Splash Screen                | Learning leaders page                  | Skills IQ leaders                  |
-|------------------------------|----------------------------------------|------------------------------------|
-| ![splash](images/splash.jpg) |![learners](images/leading_learners.jpg)| ![skill](images/leading_skill.jpg) |
+| Splash Screen                 | Learning leaders page                  | Skills IQ leaders                  |
+|-------------------------------|----------------------------------------|------------------------------------|
+| ![splash](images/splash.jpg)  |![learners](images/leading_learners.jpg)| ![skill](images/leading_skill.jpg) |
 
-| Submit page                  | Confirmation dialog                    | Success dialog                     |
-|------------------------------|----------------------------------------|------------------------------------|
-| ![submit](images/submit.jpg) | ![confirm](images/confirm.jpg)         |![success](images/success.jpg)      |
+| Submit page                   | Confirmation dialog                    | Success dialog                     |
+|-------------------------------|----------------------------------------|------------------------------------|
+| ![submit](images/submit.jpg)  | ![confirm](images/confirm.jpg)         |![success](images/success.jpg)      |
+
+| Failure dialog                |
+|-------------------------------|
+| ![failure](images/failure.jpg)|

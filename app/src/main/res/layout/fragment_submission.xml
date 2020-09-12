@@ -68,7 +68,8 @@
             app:layout_constraintEnd_toStartOf="@+id/lastName"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView">
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/firstNameText"
@@ -91,7 +92,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/firstName"
-            app:layout_constraintTop_toTopOf="@+id/firstName">
+            app:layout_constraintTop_toTopOf="@+id/firstName"
+            app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/lastNameText"
@@ -115,7 +117,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.842"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/firstName">
+            app:layout_constraintTop_toBottomOf="@+id/firstName"
+            app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/emailAddressText"
@@ -138,7 +141,8 @@
             android:hint="Project on GITHUB (Link)"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailAddress">
+            app:layout_constraintTop_toBottomOf="@+id/emailAddress"
+            app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/githubLinkText"

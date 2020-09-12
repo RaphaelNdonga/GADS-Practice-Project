@@ -63,10 +63,10 @@ class SubmissionFragment : Fragment() {
         })
         submitBtn.setOnClickListener {
             when {
-                firstNameText.text.isNullOrEmpty() -> firstNameText.error = viewModel.fieldError
-                lastNameText.text.isNullOrEmpty() -> lastNameText.error = viewModel.fieldError
-                emailAddressText.text.isNullOrEmpty() -> emailAddressText.error = viewModel.fieldError
-                githubLinkText.text.isNullOrEmpty() -> githubLinkText.error = viewModel.fieldError
+                firstNameText.text.isNullOrEmpty() -> firstName.error = viewModel.fieldError
+                lastNameText.text.isNullOrEmpty() -> lastName.error = viewModel.fieldError
+                emailAddressText.text.isNullOrEmpty() -> emailAddress.error = viewModel.fieldError
+                githubLinkText.text.isNullOrEmpty() -> githubLink.error = viewModel.fieldError
                 else-> viewModel.confirmSubmission()
             }
         }

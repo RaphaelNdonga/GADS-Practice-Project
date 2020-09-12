@@ -7,13 +7,13 @@
 
         <variable
             name="viewModel"
-            type="com.example.android.gadspracticeproject.screens.ProjectSubmissionViewModel" />
+            type="com.example.android.gadspracticeproject.screens.SubmissionViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".screens.ProjectSubmissionFragment">
+        tools:context=".screens.SubmissionFragment">
 
 
         <ImageView

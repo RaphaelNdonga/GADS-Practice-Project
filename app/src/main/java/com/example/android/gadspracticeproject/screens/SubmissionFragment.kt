@@ -11,48 +11,48 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.android.gadspracticeproject.R
-import com.example.android.gadspracticeproject.databinding.FragmentProjectSubmissionBinding
+import com.example.android.gadspracticeproject.databinding.FragmentSubmissionBinding
 import com.example.android.gadspracticeproject.util.EventObserver
 
-class ProjectSubmissionFragment : Fragment() {
+class SubmissionFragment : Fragment() {
 
     companion object {
-        fun newInstance() = ProjectSubmissionFragment()
+        fun newInstance() = SubmissionFragment()
     }
 
-    private lateinit var viewModel: ProjectSubmissionViewModel
+    private lateinit var viewModel: SubmissionViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding: FragmentProjectSubmissionBinding = DataBindingUtil.inflate(
+        val binding: FragmentSubmissionBinding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_project_submission,
+            R.layout.fragment_submission,
             container,
             false
         )
-        viewModel = ViewModelProvider(this).get(ProjectSubmissionViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(SubmissionViewModel::class.java)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
         viewModel.navigator.observe(viewLifecycleOwner, EventObserver {
             findNavController().navigate(
-                ProjectSubmissionFragmentDirections
+                SubmissionFragmentDirections
                     .actionProjectSubmissionFragmentToGadsLeaderboardFragment()
             )
         })
-        viewModel.dialogStatus.observe(viewLifecycleOwner,EventObserver{ status->
+        viewModel.submissionStatus.observe(viewLifecycleOwner,EventObserver{ status->
             when(status){
-                DialogStatus.CONFIRM ->{
+                SubmissionStatus.CONFIRM ->{
                     Log.i("SubmissionFragment","showing confirmation dialog....")
                     showConfirmationDialog()                }
-                DialogStatus.SUCCESSFUL -> {
+                SubmissionStatus.SUCCESSFUL -> {
                     Log.i("SubmissionFragment","showing successful dialog....")
                     showSuccessfulDialog()
                     viewModel.navigateToLeaderboard()
                 }
-                DialogStatus.UNSUCCESSFUL -> {
+                SubmissionStatus.UNSUCCESSFUL -> {
                     Log.i("SubmissionFragment","showing unsuccessful dialog....")
                     showUnsuccessfulDialog()
                 }

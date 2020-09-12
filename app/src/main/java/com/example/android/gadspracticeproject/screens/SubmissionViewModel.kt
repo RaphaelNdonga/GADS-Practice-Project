@@ -12,16 +12,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-enum class DialogStatus{
-    CONFIRM,SUCCESSFUL,UNSUCCESSFUL
-}
-class ProjectSubmissionViewModel : ViewModel() {
+class SubmissionViewModel : ViewModel() {
     private val projectSubmissionApiService: ProjectSubmissionApiService = ProjectSubmissionApi.retrofitService
     private val _navigator = MutableLiveData<Event<Unit>>()
     val navigator: LiveData<Event<Unit>>
         get() = _navigator
-    private val _dialogStatus = MutableLiveData<Event<DialogStatus>>()
-    val dialogStatus:LiveData<Event<DialogStatus>>
+    private val _dialogStatus = MutableLiveData<Event<SubmissionStatus>>()
+    val submissionStatus:LiveData<Event<SubmissionStatus>>
         get() = _dialogStatus
 
     val firstName = MutableLiveData<String>()
@@ -41,10 +38,10 @@ class ProjectSubmissionViewModel : ViewModel() {
         val githubLink = githubLink.value
         if(email.isNullOrEmpty() || firstName.isNullOrEmpty() || lastName.isNullOrEmpty() || githubLink.isNullOrEmpty()){
             Log.i("SubmissionViewModel","All blanks should be filled")
-            _dialogStatus.value = Event(DialogStatus.UNSUCCESSFUL)
+            _dialogStatus.value = Event(SubmissionStatus.UNSUCCESSFUL)
             return
         }
-        _dialogStatus.value = Event(DialogStatus.CONFIRM)
+        _dialogStatus.value = Event(SubmissionStatus.CONFIRM)
     }
     fun submitProject(){
         uiScope.launch {
@@ -55,9 +52,9 @@ class ProjectSubmissionViewModel : ViewModel() {
                 Log.i("SubmissionViewModel","Loading...")
                 projectSubmissionDeferred.await()
                 Log.i("SubmissionViewModel","Submission successful")
-                _dialogStatus.value = Event(DialogStatus.SUCCESSFUL)
+                _dialogStatus.value = Event(SubmissionStatus.SUCCESSFUL)
             }catch (e:Exception){
-                _dialogStatus.value = Event(DialogStatus.UNSUCCESSFUL)
+                _dialogStatus.value = Event(SubmissionStatus.UNSUCCESSFUL)
                 Log.i("SubmissionViewModel","Error $e occurred")
             }
         }

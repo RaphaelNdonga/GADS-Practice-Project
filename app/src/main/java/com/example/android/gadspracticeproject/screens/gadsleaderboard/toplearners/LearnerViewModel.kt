@@ -7,7 +7,10 @@ import androidx.lifecycle.ViewModel
 import com.example.android.gadspracticeproject.network.TopLearner
 import com.example.android.gadspracticeproject.network.TopLearnersService
 import com.example.android.gadspracticeproject.screens.gadsleaderboard.LeaderBoardApiStatus
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 class LearnerViewModel(private val topLearnersService: TopLearnersService) : ViewModel() {
     private val _topLearners = MutableLiveData<List<TopLearner>>()
@@ -25,15 +28,13 @@ class LearnerViewModel(private val topLearnersService: TopLearnersService) : Vie
     }
     private fun getTopLearners() {
         uiScope.launch {
-            val getTopLearnersDeferred: Deferred<List<TopLearner>> =
-                topLearnersService.getTopLearners()
             try {
                 Log.i("LearnerViewModel","Loading...")
                 _learnerApiStatus.value = LeaderBoardApiStatus.LOADING
-                val listData = getTopLearnersDeferred.await()
+                val getTopLearnersAsync: List<TopLearner> = getTopLearnersAsync()
                 Log.i("LearnerViewModel","Network Request successful")
                 _learnerApiStatus.value = LeaderBoardApiStatus.SUCCESS
-                _topLearners.value = listData
+                _topLearners.value = getTopLearnersAsync
             }
             catch (e:Exception){
                 Log.i("LearnerViewModel","$e error")
@@ -42,6 +43,7 @@ class LearnerViewModel(private val topLearnersService: TopLearnersService) : Vie
             }
         }
     }
+    private suspend fun getTopLearnersAsync() = topLearnersService.getTopLearners()
 
     override fun onCleared() {
         super.onCleared()

@@ -28,14 +28,13 @@ class SkillerViewModel(private val topSkillService: TopSkillService): ViewModel(
 
     private fun getTopSkillers(){
         uiScope.launch {
-            val topSkillersDeferred = topSkillService.getTopSkill()
             try{
                 Log.i("SkillerViewModel","Loading...")
                 _leaderBoardApiStatus.value = LeaderBoardApiStatus.LOADING
-                val listResult: List<TopSkillDetails> = topSkillersDeferred.await()
+                val topSkillAsync = getTopSkillAsync()
                 Log.i("SkillerViewModel","Network fetch successful")
                 _leaderBoardApiStatus.value = LeaderBoardApiStatus.SUCCESS
-                _topSkillers.value = listResult
+                _topSkillers.value = topSkillAsync
             }catch (e:Exception){
                 Log.i("SkillerViewModel","Error $e")
                 _leaderBoardApiStatus.value = LeaderBoardApiStatus.ERROR
@@ -43,6 +42,7 @@ class SkillerViewModel(private val topSkillService: TopSkillService): ViewModel(
         }
 
     }
+    private suspend fun getTopSkillAsync(): List<TopSkillDetails> = topSkillService.getTopSkill()
 
     override fun onCleared() {
         super.onCleared()
